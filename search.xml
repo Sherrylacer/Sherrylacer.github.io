@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2023/01/28/DFS/"/>
+      <url>/2023/01/28/DFS/</url>
+      
+        <content type="html"><![CDATA[<h1 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h1><p>DFS(深度优先搜索)是一种图论算法，它通过深度优先的顺序遍历图中的所有节点。DFS算法从一个起始节点开始，不断沿着边往下搜索，直到遇到终止节点或无法继续搜索为止。</p><p>DFS算法的实现可以使用递归或使用栈来实现。递归实现中，每个节点会被搜索一次，并且在搜索完之后会被弹出。而使用栈来实现时，每个节点会被压入栈中，直到所有的节点都被搜索完。</p><p>DFS算法常用于下面的场景：</p><ol><li>求图中的连通块</li><li>检测图中是否有环</li><li>求图中的桥</li><li>求图的生成树</li><li>求图的拓扑排序</li><li>求两点之间的路径</li></ol><p>在DFS算法中，可能会出现搜索过程中无用结点的情况，这些无用结点会增加搜索时间复杂度，降低算法效率。这就是剪枝技术的用处。</p><p>剪枝技术通过在搜索过程中，对某些结点进行剪枝，减少不必要的搜索，提高算法的效率。</p><p>下面列举常见的几种剪枝技巧：</p><ol><li>回溯法剪枝：在搜索过程中，记录当前结点已经搜索过的结点，遇到已经搜索过的结点时直接返回，不再进行搜索，可以使用哈希表或者数组来维护已经搜索过的结点。</li><li>剪枝法剪枝：在搜索过程中，对某些结点进行剪枝，减少不必要的搜索，例如，在8-数码问题中，可以根据每个数字在未来的可能性进行剪枝。</li><li>深度限制剪枝：在搜索过程中，设置搜索深度的限制，当搜索深度超过限制时直接返回，一般来说，深度限制应该在问题的解的最小深度和最大深度之间。</li><li>估价函数剪枝：在搜索过程中，使用估价函数对当前结点进行估价，当估价值较大时直接返回。</li></ol><h2 id="例子：深度优先搜索迷宫"><a href="#例子：深度优先搜索迷宫" class="headerlink" title="例子：深度优先搜索迷宫"></a>例子：深度优先搜索迷宫</h2><p>我们有一个迷宫，其中起点为 (0,0)，终点为 (n-1,n-1)。我们需要使用DFS算法找到一条从起点到终点的路径。</p><p>首先，我们需要定义一个二维数组来存储迷宫地图，其中0表示可以通过的点，1表示不能通过的点。接着，我们需要定义一个栈来存储当前搜索的路径。</p><p>在DFS算法执行过程中，我们首先将起点入栈，并将起点标记为已访问。然后，每次从栈顶取出一个点，并在上下左右四个方向上搜索下一个点。如果找到了终点，则DFS算法结束；否则，继续寻找下一个点。</p><pre><code>// define the stack to store the pathstack&lt;pair&lt;int, int&gt;&gt; path;// define the 2D array to store the mazeint maze[N][N];// define the visited array to store the visited nodebool visited[N][N];bool DFS(int x, int y) &#123;    // if we find the destination    if (x == n - 1 &amp;&amp; y == n - 1) &#123;        return true;    &#125;</code></pre><pre><code>// mark the current point as visitedvisited[x][y] = true;// push the current point into the stackpath.push(&#123;x, y&#125;);// check the right pointif (y + 1 &lt; n &amp;&amp; !visited[x][y + 1] &amp;&amp; !maze[x][y + 1]) &#123;    if (DFS(x, y + 1)) &#123;        return true;    &#125;&#125;// check the down pointif (x + 1 &lt; n &amp;&amp;!visited[x + 1][y] &amp;&amp; !maze[x + 1][y]) &#123;if (DFS(x + 1, y)) &#123;return true;&#125;&#125;// check the left pointif (y - 1 &gt;= 0 &amp;&amp; !visited[x][y - 1] &amp;&amp; !maze[x][y - 1]) &#123;    if (DFS(x, y - 1)) &#123;        return true;    &#125;&#125;// check the up pointif (x - 1 &gt;= 0 &amp;&amp; !visited[x - 1][y] &amp;&amp; !maze[x - 1][y]) &#123;    if (DFS(x - 1, y)) &#123;        return true;    &#125;&#125;// if we can&#39;t find the path, pop the current point from the stackpath.pop();return false;在这个例子中，我们使用栈来存储当前搜索的路径，并在找到终点时返回 true。如果找不到终点，则返回 false。如果找不到终点，这个点也会被从栈中弹出。这是一个简单的DFS算法的实现，但是在实际应用中，它可能会搜索到非常多的点，导致算法效率低下。因此，我们需要使用剪枝技巧来优化DFS算法。</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构</title>
       <link href="/2023/01/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
       <url>/2023/01/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
